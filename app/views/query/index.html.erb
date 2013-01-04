@@ -1,0 +1,9 @@
+<%= form_tag '/', method: 'post', id: 'search-form' do %>
+
+  Was
+
+  <%= text_field_tag 'term', '', placeholder: 'URL or phrase' %>
+
+  in <a href="http://3dprintweekly.com">3dprintweekly.com</a>?
+  
+<% end %>

@@ -1,0 +1,42 @@
+<div id="results">
+<% if @results.present? %>
+
+  <% if @results.first.is_a?( Link ) %>
+
+    <h1>YES</h1>
+    <ul>
+      <% @results.each do |result| %>
+        <li><%= link_to result.cached_issue.title.to_s, result.cached_issue.url.to_s %></li>
+      <% end %>
+    </ul>
+
+  <% else %>
+
+    <h1>MAYBE</h1>
+    <ul>
+      <% @results.each do |result| %>
+        <li><%= link_to result.title.to_s, result.url.to_s %></li>
+      <% end %>
+    </ul>
+
+  <% end %>
+
+
+<% else %>
+
+  <h1>NO</h1>
+
+  <% if @similar.present? %>
+  (but we found some other links at the same domain as <%= params[:term] %>)
+  <ul>
+    <% @similar.each do |similar| %>
+      <li>
+          <%= link_to similar.cached_issue.title.to_s, similar.cached_issue.url.to_s %><br />
+          <span class="similar"><%= similar.url %></span>
+      </li>
+    <% end %>
+  </ul>
+  <% end %>
+
+<% end %>
+</div>
