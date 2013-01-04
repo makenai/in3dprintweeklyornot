@@ -32,11 +32,16 @@
     <% @similar.each do |similar| %>
       <li>
           <%= link_to similar.cached_issue.title.to_s, similar.cached_issue.url.to_s %><br />
-          <span class="similar"><%= similar.url %></span>
+          <span class="similar"><%= link_to truncate( similar.url, :length => 100 ), similar.url %></span>
       </li>
     <% end %>
   </ul>
   <% end %>
 
 <% end %>
+
+<br />
+
+<a href="/">Try again?</a>
+
 </div>
